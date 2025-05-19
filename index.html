@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Proteja com Amor - Denuncie o Abuso contra Crianças e Adolescentes</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&family=Open+Sans&display=swap');
+
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+    background: linear-gradient(135deg, #e7f1f2, #ffffff);
+    color: #2c3e50;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  header {
+    background: #c88614;
+    width: 100%;
+    padding: 3rem 1.5rem 4rem;
+    color: #fff;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(26, 188, 156, 0.4);
+    border-bottom-left-radius: 3rem;
+    border-bottom-right-radius: 3rem;
+  }
+
+  header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    margin: 0;
+    line-height: 1.2;
+    font-weight: 700;
+    text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  header p {
+    margin-top: 1rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #d1f0ecdd;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    font-style: italic;
+  }
+
+  main {
+    max-width: 900px;
+    width: 100%;
+    padding: 3rem 2rem 4rem;
+  }
+
+  .section-intro {
+    margin-bottom: 3rem;
+    line-height: 1.8;
+    font-size: 1.15rem;
+    color: #34495e;
+  }
+
+  .section-intro strong {
+    color: #c88614;
+  }
+
+  .steps {
+    display: flex;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 3.5rem;
+  }
+
+  .step {
+    background: #ecf0f1;
+    border-radius: 20px;
+    flex: 1 1 260px;
+    max-width: 270px;
+    padding: 2rem 2rem 2.5rem;
+    box-shadow: 0 8px 18px rgba(27, 188, 155, 0.15);
+    text-align: center;
+    transition: box-shadow 0.3s ease;
+  }
+
+  .step:hover {
+    box-shadow: 0 12px 30px rgba(26, 188, 156, 0.3);
+  }
+
+  .step svg {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 1.3rem;
+    fill: #c88614;
+  }
+
+  .step h3 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 1.4rem;
+    margin: 0 0 0.8rem;
+    color: #c88614;
+  }
+
+  .step p {
+    font-size: 1rem;
+    color: #2c3e50;
+    line-height: 1.5;
+  }
+
+  .btn-action {
+  display: block;  /* Faz com que o botão seja um bloco de nível de bloco */
+  margin: 20px auto;  /* Centraliza o botão horizontalmente com margem superior */
+  padding: 1.1rem 3.5rem;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: #fff;
+  background-color: #c88614;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 8px 25px rgba(22, 160, 133, 0.7);
+  transition: background-color 0.3s ease;
+  user-select: none;
+}
+
+
+  .btn-action:hover,
+  .btn-action:focus {
+    background-color: #c88614;
+    outline: none;
+  }
+
+  .contact-info {
+    background: #c88614;
+    color: #e0f7f5;
+    border-radius: 20px;
+    text-align: center;
+    padding: 2rem 2rem 2.5rem;
+    box-shadow: 0 10px 30px rgba(26, 188, 156, 0.25);
+    max-width: 540px;
+    margin: 0 auto 3.5rem;
+  }
+
+  .contact-info h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+  }
+
+  .contact-info p {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-top: 0;
+  }
+
+  footer {
+    background-color: #c88614;
+    color: #d0eae8cc;
+    width: 100%;
+    padding: 1.8rem 1rem;
+    text-align: center;
+    font-size: 0.95rem;
+    box-shadow: 0 -5px 14px rgba(22, 160, 133, 0.5);
+  }
+
+  /* Modal styles */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(44, 62, 80, 0.87);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1050;
+    padding: 1rem;
+  }
+
+  .modal-overlay.active {
+    display: flex;
+  }
+
+  .modal-content {
+    background: #f9fafa;
+    border-radius: 24px;
+    max-width: 520px;
+    width: 100%;
+    padding: 3rem 3.5rem;
+    box-shadow: 0 16px 45px rgba(26, 188, 156, 0.5);
+    position: relative;
+    text-align: left;
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: #2c3e50;
+    font-family: 'Open Sans', sans-serif;
+  }
+
+  .modal-content h3 {
+    margin-top: 0;
+    margin-bottom: 1.8rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #c88614;
+    text-align: center;
+  }
+
+  .modal-content ul {
+    padding-left: 1.6rem;
+    margin: 0;
+  }
+
+  .modal-content ul li {
+    margin-bottom: 1.3rem;
+    letter-spacing: 0.02em;
+  }
+
+  .close-modal {
+    position: absolute;
+    top: 1.4rem;
+    right: 1.4rem;
+    background: transparent;
+    border: none;
+    color: #c88614;
+    font-size: 2.8rem;
+    font-weight: 700;
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.3s ease;
+  }
+
+  .close-modal:hover,
+  .close-modal:focus {
+    color: #c88614;
+    outline: none;
+  }
+  
+  @media (max-width: 768px) {
+    .steps {
+      flex-direction: column;
+      align-items: center;
+    }
+    main {
+      padding: 2rem 1rem 3rem;
+    }
+    header {
+      padding: 2.5rem 1rem 3.5rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    header h1 {
+      font-size: 2.2rem;
+    }
+    header p {
+      font-size: 1.1rem;
+    }
+    .step {
+      max-width: 100%;
+    }
+    .btn-action {
+      font-size: 1.1rem;
+      padding: 1rem 2.5rem;
+    }
+    .modal-content {
+      padding: 2rem 2rem 2.5rem;
+      font-size: 1rem;
+    }
+    .modal-content h3 {
+      font-size: 1.7rem;
+    }
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>Proteja com Amor - Denuncie o Abuso contra Crianças e Adolescentes</h1>
+  <p>"Quando denunciamos, damos voz aos que mais precisam de proteção."</p>
+</header>
+
+<main>
+  <section class="section-intro" aria-label="Introdução e importância da denúncia">
+    <p>O abuso contra crianças e adolescentes é um grave problema que atinge milhares de famílias. Denunciar é um ato de <strong>coragem</strong> e <strong>responsabilidade</strong> que salva vidas e promove justiça. É fundamental que estejamos atentos aos sinais e principais formas de agir para garantir proteção e esperança para as vítimas.</p>
+  </section>
+
+  <section class="steps" aria-label="Passos para denunciar abuso">
+    <article class="step" tabindex="0">
+      <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+        <path d="M32 2a30 30 0 1030 30A30.034 30.034 0 0032 2zm0 56a26 26 0 1126-26 26.029 26.029 0 01-26 26z"/>
+        <path d="M44.117 21.433l-17 21a2 2 0 01-3.234-2.366l13-16.125-11-8a2 2 0 112.47-3.125l14.292 10.354a2 2 0 01-.528 3.162z"/>
+      </svg>
+      <h3>Identifique os sinais</h3>
+      <p>Fique atento a mudanças de comportamento, marcas físicas, medo excessivo, isolamento ou sinais de sofrimento emocional das crianças e adolescentes.</p>
+    </article>
+
+    <article class="step" tabindex="0">
+      <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+        <path d="M50.94 43a6.6 6.6 0 01-4.6-9.85l-9.152-9.15a13 13 0 10-4.235 4.234l9.15 9.153a6.6 6.6 0 018.837 2.614zm-19.7-5.7a9 9 0 119 9 9.011 9.011 0 01-9-9z"/>
+      </svg>
+      <h3>Procure ajuda segura</h3>
+      <p>Utilize canais oficiais, como o Disque 100 ou o Conselho Tutelar da sua região, para garantir que sua denúncia seja tratada com responsabilidade e sigilo.</p>
+    </article>
+
+    <article class="step" tabindex="0">
+      <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+        <path d="M43.828 20.172L32 32 20.172 20.172a2 2 0 10-2.828 2.828L29.172 34.83a4 4 0 005.656 0l11.657-11.657a2 2 0 00-2.828-2.828z"/>
+        <path d="M48 42a6 6 0 11-12 0 6 6 0 0112 0z"/>
+      </svg>
+      <h3>Forneça detalhes precisos</h3>
+      <p>Informe datas, locais, características e nomes envolvidos para facilitar o atendimento e a atuação das autoridades competentes.</p>
+    </article>
+
+    <article class="step" tabindex="0">
+      <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+        <path d="M48.51 48.818a8.001 8.001 0 11-13.4-8.634L15.6 25.623 22 19.22l19.248 19.248a8.016 8.016 0 017.262 10.35zM31.2 30.6a5 5 0 11-2-6.9m17.1 15.876a5 5 0 01-3-.969"/>
+      </svg>
+      <h3>Denuncie com segurança</h3>
+      <p>Seus dados podem ser mantidos em sigilo. Denunciar é um direito e uma obrigação social para proteger vidas e fortalecer nossa sociedade.</p>
+    </article>
+  </section>
+
+  <section class="contact-info" aria-label="Informações de contato para denúncia">
+    <h2>Disque 100 - Atendimento gratuito, sigiloso e 24 horas</h2>
+    <p>Além do Disque 100, você pode procurar o Conselho Tutelar da sua cidade para fazer denúncias e pedir orientações.</p>
+  </section>
+
+  <button class="btn-action" id="open-modal" aria-haspopup="dialog" aria-controls="modal-instructions">Saiba mais sobre como denunciar</button>
+</main>
+
+<footer>
+  &copy; 2025 Proteja com Amor  / IEMA TAMANCÃO
+</footer>
+
+<div id="modal-instructions" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title" tabindex="-1">
+  <div class="modal-content">
+    <button class="close-modal" aria-label="Fechar">&times;</button>
+    <h3 id="modal-title">Guia detalhado para uma denúncia acolhedora</h3>
+    <ul>
+      <li><strong>Escute seu coração e olhos:</strong> Preste atenção comportamental e física na criança ou adolescente que pareça estar em risco.</li>
+      <li><strong>Não hesite em agir:</strong> A coragem de uma denúncia pode mudar completamente a vida de alguém.</li>
+      <li><strong>Conte sua história com detalhes:</strong> Informação é poder e pode acelerar a ajuda.</li>
+      <li><strong>Use os canais oficiais:</strong> Ligue para o <em>Disque 100</em> ou procure o <em>Conselho Tutelar</em> local. O atendimento é sigiloso e sua identidade protegida.</li>
+      <li><strong>Colabore com as autoridades:</strong> Se possível, acompanhe o caso para garantir proteção contínua à vítima.</li>
+      <li><strong>Compartilhe empatia:</strong> Apoie as vítimas e familiares, sem julgamentos e com muito amor.</li>
+    </ul>
+  </div>
+</div>
+
+<script>
+  const openBtn = document.getElementById('open-modal');
+  const modal = document.getElementById('modal-instructions');
+  const closeBtn = modal.querySelector('.close-modal');
+
+  openBtn.addEventListener('click', () => {
+    modal.classList.add('active');
+    modal.setAttribute('tabindex', '-1');
+    modal.focus();
+  });
+
+  closeBtn.addEventListener('click', () => {
+    modal.classList.remove('active');
+    openBtn.focus();
+  });
+
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      modal.classList.remove('active');
+      openBtn.focus();
+    }
+  });
+
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('active')) {
+      modal.classList.remove('active');
+      openBtn.focus();
+    }
+  });
+</script>
+</body>
+</html>
