@@ -278,6 +278,30 @@
       font-size: 1.7rem;
     }
   }
+  .btn-secondary {
+  display: block;
+  margin: 20px auto;
+  padding: 1.1rem 3.5rem;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: #fff;
+  background-color: #c88614; /* Vermelho */
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 8px 25px #c88614;
+  transition: background-color 0.3s ease;
+  user-select: none;
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus {
+  background-color: #c88614;
+  outline: none;
+}
+
+  
 </style>
 </head>
 <body>
@@ -326,7 +350,6 @@
       <p>Seus dados podem ser mantidos em sigilo. Denunciar é um direito e uma obrigação social para proteger vidas e fortalecer nossa sociedade.</p>
     </article>
   </section>
-
   <section class="contact-info" aria-label="Informações de contato para denúncia">
     <h2>Disque 100 - Atendimento gratuito, sigiloso e 24 horas</h2>
     <p>Além do Disque 100, você pode procurar o Conselho Tutelar da sua cidade para fazer denúncias e pedir orientações.</p>
@@ -350,9 +373,15 @@
       <li><strong>Use os canais oficiais:</strong> Ligue para o <em>Disque 100</em> ou procure o <em>Conselho Tutelar</em> local. O atendimento é sigiloso e sua identidade protegida.</li>
       <li><strong>Colabore com as autoridades:</strong> Se possível, acompanhe o caso para garantir proteção contínua à vítima.</li>
       <li><strong>Compartilhe empatia:</strong> Apoie as vítimas e familiares, sem julgamentos e com muito amor.</li>
+      <hr>
+<a href="https://www.gov.br/mdh/pt-br/assuntos/disque-100" target="_blank" class="btn-secondary">
+  Fazer denúncia agora
+</a>
     </ul>
   </div>
+
 </div>
+
 
 <script>
   const openBtn = document.getElementById('open-modal');
